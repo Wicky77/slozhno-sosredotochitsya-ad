@@ -1,23 +1,25 @@
-name: Tests
+name: Debug Tests
 
 on:
   push:
     branches:
       - '**'
-    tags:
-      - '**'
 
 jobs:
-  tests:
+  debug:
     runs-on: ubuntu-latest
-    # Добавьте условие на уровне job
-    if: ${{ !github.event.repository.private }}
-    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         
-      - name: Tests
+      - name: Debug info
+        run: |
+          echo "Repository: ${{ github.repository }}"
+          echo "Private: ${{ github.event.repository.private }}"
+          echo "Event: ${{ github.event_name }}"
+          ls -la
+          
+      - name: Test Yandex Action
         uses: Yandex-Practicum/test-project-action@v1
         with:
           project: 'slozhno-sosredotochitsya-ad'
