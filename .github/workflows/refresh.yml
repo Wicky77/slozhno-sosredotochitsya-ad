@@ -1,4 +1,5 @@
 name: Force Refresh
+
 on: 
   workflow_dispatch:  # Позволяет запустить вручную
 
@@ -6,6 +7,9 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
       - name: Force repository refresh
         run: |
           echo "Forcing GitHub to recognize public status"
