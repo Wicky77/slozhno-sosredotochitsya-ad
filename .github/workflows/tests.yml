@@ -12,9 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4  # Обновите до v4
+        uses: actions/checkout@v4
         
       - name: Tests
+        if: ${{ !github.event.repository.private }}  # Запускать только для публичных
         uses: Yandex-Practicum/test-project-action@v1
         with:
           project: 'slozhno-sosredotochitsya-ad'
