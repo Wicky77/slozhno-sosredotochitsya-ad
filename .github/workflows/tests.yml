@@ -10,12 +10,14 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
+    # Добавьте условие на уровне job
+    if: ${{ !github.event.repository.private }}
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         
       - name: Tests
-        if: ${{ !github.event.repository.private }}  # Запускать только для публичных
         uses: Yandex-Practicum/test-project-action@v1
         with:
           project: 'slozhno-sosredotochitsya-ad'
