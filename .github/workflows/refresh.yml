@@ -1,1 +1,14 @@
+name: Force Refresh
+on: 
+  workflow_dispatch:  # Позволяет запустить вручную
 
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Force repository refresh
+        run: |
+          echo "Forcing GitHub to recognize public status"
+          echo "Repository: ${{ github.repository }}"
+          echo "Is Private: ${{ github.event.repository.private }}"
+          date
