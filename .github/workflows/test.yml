@@ -1,9 +1,22 @@
 name: Tests
-on: [push, pull_request]
+
+on:
+  push:
+    branches:
+      - '**'
+    tags:
+      - '**'
+
 jobs:
-  test:
+  tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Run tests
-        run: echo "Tests would run here"
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Check if the repository is private
+        run: exit 1
+        if: ${{github.event.repository.private}}
+      - name: Tests
+        uses: Yandex-Practicum/test-project-action@v1
+        with:
+          project: 'slozhno-sosredotochitsya-ad'
