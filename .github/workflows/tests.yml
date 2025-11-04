@@ -1,25 +1,22 @@
-name: Debug Tests
+name: Tests
 
 on:
   push:
     branches:
       - '**'
+  pull_request:
+    branches:
+      - '**'
 
 jobs:
-  debug:
+  tests:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         
-      - name: Debug info
-        run: |
-          echo "Repository: ${{ github.repository }}"
-          echo "Private: ${{ github.event.repository.private }}"
-          echo "Event: ${{ github.event_name }}"
-          ls -la
-          
-      - name: Test Yandex Action
+      - name: Run Yandex Tests
         uses: Yandex-Practicum/test-project-action@v1
         with:
           project: 'slozhno-sosredotochitsya-ad'
