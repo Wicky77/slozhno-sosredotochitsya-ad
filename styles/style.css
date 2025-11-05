@@ -1,4 +1,4 @@
-.shadow-decor {
+.shadow-decor { 
   text-shadow: 2px 2px 0 var(--accent-color, #ff0070);
 }
 
